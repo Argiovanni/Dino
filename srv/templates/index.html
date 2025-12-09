@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D.I.N.O User Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center items horizontally */
+            text-align: center;
+            padding-top: 50px; /* Add some space from the top */
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 5px;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .user-button, .new-user-button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            background-color: #f0f0f0;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1em;
+            display: flex; /* For aligning icon and text in new user button */
+            align-items: center;
+            justify-content: center;
+        }
+        .user-button:hover, .new-user-button:hover {
+            background-color: #e0e0e0;
+        }
+        .user-button-container {
+            display: flex; /* To put the user buttons side-by-side */
+            gap: 10px; /* Space between buttons */
+            margin-bottom: 20px;
+        }
+        .plus-icon {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>D.I.N.O</h1>
+
+    <p>Select user</p>
+    <form action="/submit" method="post"></form>
+        <div class="user-button-container">
+            <button action="/submit" class="user-button">
+                User A
+            </button>
+            <button action="/submit" class="user-button">
+                User B
+            </button>
+        </div>
+
+        <button type="submit" name="submit" value="Submit">{{ new_user_button }}</button>
+        <input type="text" name="name" placeholder="Enter your name">
+    </form>
+
+</body>
+</html>
