@@ -6,7 +6,7 @@ from flask_login import LoginManager
 # Extensions Flask (créées UNE fois)
 db = SQLAlchemy()
 login_manager = LoginManager()
-login_manager.login_view = "main.login"  # endpoint login
+login_manager.login_view = "main.index"
 
 def create_app():
     app = Flask(__name__)
