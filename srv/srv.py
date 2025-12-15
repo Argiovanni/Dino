@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route("/")
 def select_user():
     new_user_button = "New user"
-    return render_template('select-user.html',new_user_button=new_user_button)
+    return render_template('index.html',new_user_button=new_user_button)
 
 @app.route('/submit', methods=['POST'])
 def submit():
