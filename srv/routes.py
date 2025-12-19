@@ -21,7 +21,7 @@ def index():
     )
 
 
-@main.route('/submit', methods=['POST'])
+@main.route('/submit', methods=['POST']) #old/deprecated. to be removed
 def submit():
     if request.method == 'POST':
         name = request.form['name']
