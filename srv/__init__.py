@@ -2,11 +2,14 @@ import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_socketio import SocketIO
 
 # Extensions Flask (créées UNE fois)
 db = SQLAlchemy()
 login_manager = LoginManager()
 login_manager.login_view = "main.index"
+socketio = SocketIO()
+
 
 def create_app():
     app = Flask(__name__)
@@ -14,9 +17,7 @@ def create_app():
     # =========================
     # Configuration
     # =========================
-    app.config["SECRET_KEY"] = os.environ.get(
-        "FLASK_SECRET_KEY", "dev-secret-key"
-    )
+    app.config["SECRET_KEY"] = os.environ.get("FLASK_SECRET_KEY", "dev-secret-key")
 
     BASEDIR = os.path.abspath(os.path.dirname(__file__))
 
@@ -30,11 +31,13 @@ def create_app():
     # =========================
     db.init_app(app)
     login_manager.init_app(app)
+    socketio.init_app(app, cors_allowed_origins="*")
 
     # =========================
     # Blueprints
     # =========================
     from .routes import main
+
     app.register_blueprint(main)
 
     # =========================
@@ -42,5 +45,12 @@ def create_app():
     # =========================
     with app.app_context():
         db.create_all()
+
+    # ==========================================
+    # Lancement du thread CAN (Logique dans utils)
+    # ==========================================
+    from .utils import start_can_thread
+
+    start_can_thread(app)
 
     return app

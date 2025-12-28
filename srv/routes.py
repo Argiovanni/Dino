@@ -12,22 +12,20 @@ import time
 
 main = Blueprint("main", __name__)
 
+
 @main.route("/")
 def index():
     users = User.query.all()
-    return render_template(
-        "index.html",
-        users=users
-    )
+    return render_template("index.html", users=users)
 
 
-@main.route('/submit', methods=['POST']) #old/deprecated. to be removed
+@main.route("/submit", methods=["POST"])  # old/deprecated. to be removed
 def submit():
-    if request.method == 'POST':
-        name = request.form['name']
-    
+    if request.method == "POST":
+        name = request.form["name"]
+
     # Perform some processing with the form data
-    return 'Hello, ' + name + '!'
+    return "Hello, " + name + "!"
 
 
 @main.route("/user/new", methods=["GET", "POST"])
@@ -44,8 +42,7 @@ def create_user():
             return render_template("new_user.html", form=form)
 
         user = User(
-            username=username,
-            password_hash=generate_password_hash(form.password.data)
+            username=username, password_hash=generate_password_hash(form.password.data)
         )
 
         db.session.add(user)
@@ -60,10 +57,7 @@ def create_user():
 @main.route("/dashboard")
 @login_required
 def dashboard():
-    return render_template(
-        "dashboard.html",
-        user=current_user
-    )
+    return render_template("dashboard.html", user=current_user)
 
 
 @main.route("/login/<int:user_id>", methods=["GET", "POST"])
@@ -75,10 +69,8 @@ def login_user_profile(user_id):
         login_user(user)
         return redirect(url_for("main.dashboard"))
 
-    return render_template(
-        "login.html",
-        selected_user=user
-    )
+    return render_template("login.html", selected_user=user)
+
 
 @main.route("/logout")
 @login_required
