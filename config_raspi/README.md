@@ -19,3 +19,7 @@ Dans les prochains jours, nous avons définis plusieurs objectifs:
 
 ### 4. Conclusion
 Si notre projet est actuellement bloqué par les difficultés à la lecture du bus CAN, nous avons toutde même des perspectives d'évolution pour pouvoir assez rapidement mettre en place une première phase du poc.
+
+### Rapport d'avancement 07/01
+
+La communication CAN entre Arduino et Raspberry pi marche enfin, le problème était lié au Mac qui ne délivrait pas 5V à l'arduino.
