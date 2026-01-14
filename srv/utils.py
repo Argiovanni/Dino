@@ -33,11 +33,23 @@ def can_reader_thread(app):
                 data_to_send["value"] = msg.data[0]
 
             # Envoi au Dashboard via SocketIO
-            socketio.emit("can_update", data_to_send, broadcast=True)
+            socketio.emit("can_update", data_to_send)
 
 
 def start_can_thread(app):
     """Lance le thread en mode 'daemon' pour qu'il s'arrête avec le serveur."""
-    thread = threading.Thread(target=can_reader_thread, args=(app,))
-    thread.daemon = True
-    thread.start()
+    # thread = threading.Thread(target=can_reader_thread, args=(app,))
+    # thread.daemon = True
+    # thread.start()
+    socketio.start_background_task(can_reader_thread)
+
+
+#for debug
+@socketio.on('connect')
+def handle_connect():
+    print("Client connecté")
+
+
+@socketio.on('disconnect')
+def handle_disconnect():
+    print("Client déconnecté")

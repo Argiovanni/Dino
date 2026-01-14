@@ -79,7 +79,7 @@
 <script src="{{ url_for('static', filename='assets/js/socket.io.min.js') }}" defer></script>
 
 <script>
-    const socket = io();
+    const socket = io(window.location.origin);
 
     // Références DOM
     const elements = {
