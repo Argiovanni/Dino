@@ -31,9 +31,6 @@ def can_reader_thread(app):
             elif msg.arbitration_id == 0x3:
                 data_to_send["type"] = "Temp"
                 data_to_send["value"] = msg.data[0]
-            elif msg.arbitration_id == 0x4:
-                data_to_send["type"] = "Load"
-                data_to_send["value"] = msg.data[0]
 
             # Envoi au Dashboard via SocketIO
             socketio.emit("can_update", data_to_send)

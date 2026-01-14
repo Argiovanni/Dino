@@ -68,11 +68,6 @@
         <div class="unit">°C</div>
     </div>
 
-    <div class="card">
-        <div class="label">Charge Moteur</div>
-        <div class="value" id="load">--</div>
-        <div class="unit">%</div>
-    </div>
 </div>
 
 <div class="status-indicator">
@@ -92,7 +87,6 @@
         rpm: document.getElementById('rpm'),
         speed: document.getElementById('speed'),
         temp: document.getElementById('temp'),
-        load: document.getElementById('load'),
         status: document.getElementById('can-status')
     };
 
@@ -114,8 +108,6 @@
             elements.speed.innerText = data.value;
         } else if (data.type === 'Temp') {
             elements.temp.innerText = data.value;
-        } else if (data.type === 'Load') {
-            elements.load.innerText = data.value;
         }
     });
 </script>
