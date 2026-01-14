@@ -23,3 +23,12 @@ Si notre projet est actuellement bloqué par les difficultés à la lecture du b
 ### Rapport d'avancement 07/01
 
 La communication CAN entre Arduino et Raspberry pi marche enfin, le problème était lié au Mac qui ne délivrait pas 5V à l'arduino.
+
+## interface can de la raspi
+sudo ip link set can0 type can bitrate 250000 loopback off
+sudo ip link set can0 up
+
+## config raspi en mode hotspot
+down interface wlan0 (sudo ip a d @ip dev wlan0)
+up interface wlan0 avec 192.168.1.1/24 (sudo ip a a 192.168.1.1/24 dev wlan0)
+sudo hostapd /etc/hostapd/hostapd.conf
