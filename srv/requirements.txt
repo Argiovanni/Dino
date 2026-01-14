@@ -7,4 +7,3 @@ Flask-SQLAlchemy
 Flask-Login
 WTForms
 email-validator
-gunicorn
