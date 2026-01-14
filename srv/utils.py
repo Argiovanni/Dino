@@ -4,6 +4,16 @@ import random
 import threading
 from . import socketio  # Import de l'instance créée dans __init__.py
 
+#for debug
+@socketio.on('connect')
+def handle_connect():
+    print("Client connecté")
+
+
+@socketio.on('disconnect')
+def handle_disconnect():
+    print("Client déconnecté")
+
 
 def can_reader_thread(app):
     """Boucle de lecture du bus CAN."""
@@ -41,15 +51,6 @@ def start_can_thread(app):
     # thread = threading.Thread(target=can_reader_thread, args=(app,))
     # thread.daemon = True
     # thread.start()
-    socketio.start_background_task(can_reader_thread)
+    socketio.start_background_task(can_reader_thread,app)
 
 
-#for debug
-@socketio.on('connect')
-def handle_connect():
-    print("Client connecté")
-
-
-@socketio.on('disconnect')
-def handle_disconnect():
-    print("Client déconnecté")

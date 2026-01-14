@@ -76,10 +76,10 @@
 {% endblock content %}
 
 {% block javascripts %}
-<script src="{{ url_for('static', filename='assets/js/socket.io.min.js') }}" defer></script>
+<script src="{{ url_for('static', filename='assets/js/socket.io.min.js') }}"></script>
 
 <script>
-    const socket = io(window.location.origin);
+    const socket = io();
 
     // Références DOM
     const elements = {
