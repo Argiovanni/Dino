@@ -1,5 +1,11 @@
 # Aquisition des donnés sur le bus can
 
+## chemin des fichiers
+/etc/hostapd/hostapd.conf
+/etc/dnsmasq.conf
+/usr/local/bin/start_dino.sh
+/etc/systemd/system/dino.service
+
 ## Rapport avancement  (19/12)
 
 ### 1. Contexte 
