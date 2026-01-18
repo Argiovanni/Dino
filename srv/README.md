@@ -1,7 +1,6 @@
 # Code for web server running on raspi 3B
 
-* [doc python-can](https://python-can.readthedocs.io/en/stable/index.html)
-
+[TOC]
 
 ## Rapport d’avancement (19/12)
 
@@ -61,3 +60,34 @@ Plusieurs éléments restent à implémenter pour compléter cette partie du pro
 
 La partie serveur web embarqué est aujourd’hui **fonctionnelle dans ses fondations** : serveur Flask opérationnel, authentification utilisateur en place et accès sécurisé à un dashboard.
 Les prochaines étapes consisteront à enrichir cette base avec l’acquisition des données véhicule, leur visualisation en temps réel et leur exploitation sur le long terme.
+
+
+## Rapport d’avancement (19/01)
+
+À ce stade du projet, l’application D.I.N.O. a évolué afin d’intégrer la lecture et l’exploitation de données issues du bus CAN, ainsi que leur diffusion en temps réel vers l’interface utilisateur.
+
+Un utilisateur correctement authentifié peut désormais accéder à des données véhicule provenant du bus CAN via l’interface web.
+Les identifiants des trames CAN dépendant fortement du constructeur et du modèle du véhicule, et compte tenu des contraintes matérielles liées à un branchement direct sur un véhicule réel, une simulation de trafic CAN a été mise en place.
+
+Cette simulation est réalisée à l’aide d’une carte Arduino, qui génère un trafic CAN artificiel permettant de faire varier dynamiquement plusieurs paramètres représentatifs de l’état du véhicule, notamment :
+
+* la vitesse,
+* le régime moteur,
+* la température moteur.
+
+Les trames CAN simulées sont transmises sur le bus, puis lues par la Raspberry Pi via l’interface `can0`.
+
+### Mise à jour temps réel via Flask-SocketIO
+
+Afin d’assurer une mise à jour fluide et réactive des données affichées, l’application Flask s’appuie désormais sur Flask-SocketIO.
+
+Ce mécanisme permet :
+
+* l’établissement d’une connexion persistante entre le serveur et le client web,
+* l’envoi des nouvelles valeurs dès leur réception, sans rechargement de page,
+* une actualisation en temps réel du tableau de bord côté client.
+
+Concrètement, les données acquises depuis le bus CAN sont traitées côté serveur puis émises sous forme d’événements SocketIO vers les clients connectés.
+Le tableau de bord met ainsi à jour dynamiquement les indicateurs (vitesse, régime moteur, température moteur) dès qu’une nouvelle trame est reçue.
+
+Cette approche est particulièrement adaptée à un contexte embarqué et IoT, où la réactivité et la faible latence sont essentielles pour l’affichage d’informations de conduite.
