@@ -8,3 +8,5 @@ L'arduino envoie des données comme la vitesse, le régime moteur ou encore la t
 
 ![Connection Arduino-MCP2515](../images/cablage_can.png)
 
+Connection en SPI entre la carte arduino et le controller MCP 2515.
+
