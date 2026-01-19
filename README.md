@@ -60,7 +60,7 @@
         └────────────────┘  └───────────┘  └───────────┘
 ```
 
-![Cablage générale](../images/cablage_gen.png)
+![Cablage général](images/cablage_gen.png)
 
 NB : Il est important de mettre deux résistances de 120 ohms de part et d'autres du bus pour éviter les phénomènes de réflexions.
 
