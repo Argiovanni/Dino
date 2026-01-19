@@ -6,5 +6,5 @@ L'arduino envoie des données comme la vitesse, le régime moteur ou encore la t
 
 ## Câblage
 
-![Connection Arduino-MCP2515](Dino/images/cablage_can.png "Connection en SPI")
+![Connection Arduino-MCP2515](Dino/images/cablage_can.png)
 
