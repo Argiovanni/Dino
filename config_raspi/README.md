@@ -70,3 +70,37 @@ Cette configuration permet une utilisation totalement embarquée du système, sa
 
 * Service systemd :
   `/etc/systemd/system/dino.service`
+
+## Configuration de l'interface CAN
+
+Câblage :
+
+![Cablage côté raspi](../images/cablage_raspi.png)
+
+Une fois que tout est bien branché, il faut activer SPI (pour communiquer avec MCP2515)
+
+```
+sudo raspi-config
+```
+Puis aller dans, Interfacing Options → SPI → Enable
+
+Ensuite, il faut modifier le fichier /boot/firmware/config.txt. Ajouter : 
+
+```
+# Activer le SPI matériel
+dtparam=spi=on
+# Interface CAN can0 via MCP2515
+# - oscillator = fréquence du quartz du module (8 MHz ici)
+# - interrupt  = GPIO utilisé pour INT (GPIO25)
+dtoverlay=mcp2515-can0,oscillator=8000000,interrupt=25
+# Utiliser le driver SPI bcm2835
+dtoverlay=spi-bcm2835
+# Activer le SPI DMA 
+dtoverlay=spi-dma
+```
+Puis nous Utilisons la librairie can-utils pour reçevoir (candump <nom_interface>) ou écrire (cansend <nom_interface> <message>), ici nous n'utilisons pas l'écriture dans le bus.
+
+Nous avons suivi le tutoriel (https://github.com/tolgakarakurt/CANBus-MCP2515-Raspi/tree/master?tab=readme-ov-file)
+
+
+
