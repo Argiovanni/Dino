@@ -84,7 +84,7 @@ Une fois que tout est bien branché, il faut activer SPI (pour communiquer avec 
 ```
 sudo raspi-config
 ```
-Puis aller dans, Interfacing Options → SPI → Enable
+Aller dans, Interfacing Options → SPI → Enable
 
 Ensuite, il faut modifier le fichier /boot/firmware/config.txt. Ajouter : 
 
