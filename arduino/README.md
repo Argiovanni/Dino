@@ -16,5 +16,7 @@ Connection en SPI entre la carte arduino et le controller MCP 2515.
 
 Les entrées analogiques de l’Arduino sont utilisées pour simuler les commandes et états du véhicule. La broche A0 est reliée à un potentiomètre représentant l’accélérateur ; sa valeur analogique comprise entre 0 et 1023 est interprétée comme une consigne de vitesse. La broche A5 est connectée à un second potentiomètre simulant le régime moteur (RPM), dont la valeur est convertie linéairement en une plage réaliste de 0 à 8000 tr/min. Enfin, la broche A1 est utilisée de manière optionnelle afin d’initialiser le générateur de nombres pseudo-aléatoires (randomSeed()), permettant de produire des valeurs de température moteur variables et non déterministes.
 
+Nous avons suivi le tutoriel suivant : https://arduino.developpez.com/tutoriels/arduino-a-l-ecole/?page=projet-10-le-potentiometre
+
 
 
