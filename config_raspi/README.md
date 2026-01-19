@@ -77,6 +77,8 @@ Câblage :
 
 ![Cablage côté raspi](../images/cablage_raspi.png)
 
+Nous devons alimenter la raspberry pi en 5V.
+
 Une fois que tout est bien branché, il faut activer SPI (pour communiquer avec MCP2515)
 
 ```
@@ -98,9 +100,19 @@ dtoverlay=spi-bcm2835
 # Activer le SPI DMA 
 dtoverlay=spi-dma
 ```
+Ensuite, up l'interface can0 (automatisé dans le systemd):
+
+```
+sudo ip link set can0 up type can bitrate 250000 loopback off
+sudo ip link set dev can0 up
+```
+
+
 Puis nous Utilisons la librairie can-utils pour reçevoir (candump <nom_interface>) ou écrire (cansend <nom_interface> <message>), ici nous n'utilisons pas l'écriture dans le bus.
 
 Nous avons suivi le tutoriel (https://github.com/tolgakarakurt/CANBus-MCP2515-Raspi/tree/master?tab=readme-ov-file)
+
+
 
 
 
