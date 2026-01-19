@@ -59,9 +59,11 @@
         │  (Web Browser) │  │ (Web App) │  │ (Web App) │
         └────────────────┘  └───────────┘  └───────────┘
 ```
+
 ![Cablage générale](../images/cablage_gen.png)
 
 NB : Il est important de mettre deux résistances de 120 ohms de part et d'autres du bus pour éviter les phénomènes de réflexions.
+
 Voir le câblage détaillé de chaque partie dans les readme correspondants au sous-parties
 ---
 
