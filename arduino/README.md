@@ -5,3 +5,6 @@ La connection entre l’arduino et le MCP2515 est faite en spi et le MCP2515 per
 L'arduino envoie des données comme la vitesse, le régime moteur ou encore la température de l'huile. La vitesse est représentée par un potentiomètre sur le breadboard. C'est aussi le cas du régime moteur. Le frein est représenté par le bouton poussoir.
 
 ## Câblage
+
+![Connection Arduino-MCP2515](images/cablage_can.png "Connection en SPI")
+
